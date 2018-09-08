@@ -1,0 +1,4 @@
+.env/*
+.env
+config_live.json
+.oxford_anki.sublime-project
