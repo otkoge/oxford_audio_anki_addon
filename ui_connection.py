@@ -3,7 +3,9 @@ from aqt.qt import QUrl, QDesktopServices
 from aqt.utils import tooltip, showInfo, showWarning
 from anki.hooks import addHook
 from aqt.editor import Editor
-from .oxford_api import get_audio_and_ipa, FailedToFetch, ResponseNotProperFormat
+from .oxford_api import get_audio_and_ipa
+from .oxford_api import FailedToFetch
+from .oxford_api import ResponseNotProperFormat
 
 
 def load_config():
@@ -54,7 +56,7 @@ def get_audio(editor):
         open_browser(word, config)
         return None
     except ResponseNotProperFormat as exp:
-        msg = f'Response from the API doesn seem to be correct: {exp.msg}'
+        msg = f'Response from the API doesn seem to be correct: {str(exp)}'
         showWarning(msg)
         open_browser(word, config)
         return None

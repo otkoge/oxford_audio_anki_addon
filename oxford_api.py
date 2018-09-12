@@ -45,8 +45,7 @@ def extract_audio_and_ipa(response_json):
         msg = 'Response contains no reference to audio file.'
         raise ResponseNotProperFormat(msg)
     if not ipa:
-        msg = 'Response contains no phonetic spelling.'
-        raise ResponseNotProperFormat(msg)
+        ipa = ''
     return audio, ipa
 
 
