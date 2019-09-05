@@ -15,8 +15,10 @@ def load_api_key():
 
 
 def get_word_from_oxford(word, api_keys):
-    url = 'https://od-api.oxforddictionaries.com:443/api/v1/entries/'
-    url += f'en/{word.lower()}'
+    url = 'https://od-api.oxforddictionaries.com:443/api/v2/en_gb/entries/'
+    url += f'{word.lower()}'
+    api_keys = {key: value for key, value in api_keys.items()
+                if key in ["app_id", "app_key"]}
     response = requests.get(url, headers=api_keys)
     try:
         return response.json()
@@ -60,5 +62,5 @@ def get_audio_and_ipa(word, api_keys):
 
 if __name__ == '__main__':
     api_keys = load_api_key()
-    result = get_word_from_oxford('house')
+    result = get_word_from_oxford('house', api_keys)
     audio, ipa = extract_audio_and_ipa(result)
