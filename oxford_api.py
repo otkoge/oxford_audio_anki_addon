@@ -15,7 +15,7 @@ def load_api_key():
 
 
 def get_word_from_oxford(word, api_keys):
-    url = 'https://od-api.oxforddictionaries.com:443/api/v2/en_gb/entries/'
+    url = 'https://od-api.oxforddictionaries.com/api/v2/entries/en-gb/'
     url += f'{word.lower()}'
     api_keys = {key: value for key, value in api_keys.items()
                 if key in ["app_id", "app_key"]}
